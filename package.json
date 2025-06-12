@@ -8,8 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
-    "pre-commit": "next lint"
+    "pre-commit": "next lint",
+    "prepare": "husky",
+    "test": "echo \"No tests yet\" && exit 0"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -37,7 +38,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.25.1",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "husky": "^7.0.2",
+    "husky": "^8.0.0",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1"
   }
