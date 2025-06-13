@@ -18,19 +18,19 @@ const initialState = {
 // pulls in user and object details
 function UserProfileForm({ obj = initialState }) {
   const { user } = useAuth();
-  const [userDetails, setCustomerDetails] = useState(initialState);
+  const [userDetails, setUserDetails] = useState(initialState);
   const router = useRouter();
 
   // brings user data in for editing their profile
   useEffect(() => {
-    if (obj.uid) setCustomerDetails(obj);
+    if (obj.uid) setUserDetails(obj);
   }, [obj]);
 
   // Grants access to the user object, destructuring the name and the value of the form input
   const handleUserUpdate = (e) => {
     const { name, value } = e.target;
     // calling setUserDetails modifying prevState and spreading it
-    setCustomerDetails((prevState) => ({
+    setUserDetails((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -41,11 +41,11 @@ function UserProfileForm({ obj = initialState }) {
     e.preventDefault();
     const payload = { ...userDetails, uid: user.uid };
     // if the object already has an id then the updateUser function is called router pushes the updated information to the user page-else it creates a new user
-    if (obj.id) {
-      updateUser(payload).then(() => router.push(`/userProfile`));
+    if (obj.uid) {
+      updateUser(payload).then(() => router.push('/userProfile'));
     } else {
       createUser(payload).then(() => {
-        router.push(`/userProfile`);
+        router.push('/userProfile');
       });
     }
   };
@@ -76,6 +76,7 @@ function UserProfileForm({ obj = initialState }) {
 }
 
 UserProfileForm.propTypes = {
+  // eslint-disable-next-line react/require-default-props
   obj: PropTypes.shape({
     uid: PropTypes.string,
     userName: PropTypes.string,
