@@ -4,16 +4,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Link from 'next/link';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { deletePlant } from '../api/plantData';
+import { useAuth } from '../utils/context/authContext';
 
 function PlantCard({ plantObj, onUpdate }) {
-// When plant is deleted this will remove the book and rerender the view
+  const { user } = useAuth;
+  //
+  // When plant is deleted this will remove the book and rerender the view
   const deleteThePlant = () => {
     if (window.confirm(`Delete ${plantObj.name}?`)) {
       deletePlant(plantObj.id).then(() => onUpdate());
     }
   };
+  const isOwner = !plantObj.id || plantObj.userProfileUid === user.userProfileUid;
+
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={plantObj.picture} alt="/purple-flower.jpg" />
@@ -38,12 +44,18 @@ function PlantCard({ plantObj, onUpdate }) {
         <ListGroup.Item>{plantObj.region}</ListGroup.Item>
       </ListGroup>
       <Card.Body>
-        <Card.Link href={`/plants/edit/${plantObj.id}`} passHref>
-          <Button variant="primary" className="m-2">
-            VIEW
+        {isOwner && (
+        <Link href={`/plants/edit/${plantObj.id}`} passHref>
+          <Button id="edit" className="m-2">
+            Edit
           </Button>
-        </Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
+        </Link>
+        )}
+        {isOwner && (
+          <Button id="delete" onClick={deleteThePlant} className="m-2">
+            DELETE
+          </Button>
+        )}
       </Card.Body>
     </Card>
   );
