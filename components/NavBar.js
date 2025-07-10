@@ -27,7 +27,7 @@ export default function NavBar() {
             <Link passHref href="/">
               <Nav.Link>Home</Nav.Link>
             </Link>
-            <Link passHref href={`/userProfile/view/${user.uid}`}>
+            <Link passHref href={`/userProfile/${user.uid}`}>
               <Nav.Link>User Profile</Nav.Link>
             </Link>
             <Link passHref href="/plants/viewAll">
