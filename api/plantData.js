@@ -1,6 +1,6 @@
-import { firebaseConfig } from '../utils/client';
+import { clientCredentials } from '../utils/client';
 
-const endpoint = firebaseConfig.databaseURL;
+const endpoint = clientCredentials.databaseURL;
 
 const getAllPlants = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/api/Plant`, {

@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import UserProfileForm from '../../../../components/UserProfileForm';
-import { getSingleUser } from '../../../../api/userProfileData';
+import UserProfileForm from '../../../components/UserProfileForm';
+import { getSingleUser } from '../../../api/userProfileData';
 
 // setup function that allows a User to be edited
 export default function EditUser({ params }) {

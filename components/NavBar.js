@@ -33,7 +33,7 @@ export default function NavBar() {
             <Link passHref href="/plants/viewAll">
               <Nav.Link>Plants</Nav.Link>
             </Link>
-            <Link passHref href="/pollinators/viewAll">
+            <Link passHref href="/pollinator/viewAll">
               <Nav.Link>Pollinators</Nav.Link>
             </Link>
             <Link passHref href="/garden/view">

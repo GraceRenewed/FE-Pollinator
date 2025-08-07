@@ -61,8 +61,6 @@ function PlantCard({ plantObj, onUpdate }) {
   );
 }
 
-export default PlantCard;
-
 PlantCard.propTypes = {
   plantObj: PropTypes.shape({
     id: PropTypes.string,
@@ -78,3 +76,5 @@ PlantCard.propTypes = {
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
+
+export default PlantCard;
