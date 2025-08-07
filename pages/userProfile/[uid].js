@@ -4,9 +4,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-import { useAuth } from '../../../utils/context/authContext';
-import { getSingleUser } from '../../../api/userProfileData';
-import UserProfileCard from '../../../components/UserProfileCard';
+import { useAuth } from '../../utils/context/authContext';
+import { getSingleUser } from '../../api/userProfileData';
+import UserProfileCard from '../../components/UserProfileCard';
 
 export default function UserProfile({ params }) {
   // set state for user
