@@ -10,14 +10,15 @@ import { deletePlant } from '../api/plantData';
 import { useAuth } from '../utils/context/authContext';
 
 function PlantCard({ plantObj, onUpdate }) {
-  const { user } = useAuth;
-  //
+  const { user } = useAuth();
+
   // When plant is deleted this will remove the book and rerender the view
   const deleteThePlant = () => {
     if (window.confirm(`Delete ${plantObj.name}?`)) {
       deletePlant(plantObj.id).then(() => onUpdate());
     }
   };
+  console.log(plantObj);
   const isOwner = !plantObj.id || plantObj.userProfileUid === user.userProfileUid;
 
   return (
