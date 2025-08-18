@@ -26,7 +26,7 @@ export default function ViewAllPlants() {
       <Link href="/plants/new" passHref>
         <Button>Add a Plant</Button>
       </Link>
-      <div className="d-flex flex-wrap">{plants.length === 0 ? <h2>Oh no there are no plants!</h2> : plants.map((plant) => <PlantCard key={plant.id} plantsObj={plant} onUpdate={getAllThePlants} />)}</div>
+      <div className="d-flex flex-wrap">{plants.length === 0 ? <h2>Oh no there are no plants!</h2> : plants.map((plant) => <PlantCard key={plant.id} plantObj={plant} onUpdate={getAllThePlants} />)}</div>
     </div>
   );
 }

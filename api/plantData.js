@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 const getAllPlants = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/api/Plant`, {
+  fetch(`${endpoint}/api/Plant/`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
