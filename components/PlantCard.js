@@ -18,7 +18,6 @@ function PlantCard({ plantObj, onUpdate }) {
       deletePlant(plantObj.id).then(() => onUpdate());
     }
   };
-  console.log(plantObj);
   const isOwner = !plantObj.id || plantObj.userProfileUid === user.userProfileUid;
 
   return (

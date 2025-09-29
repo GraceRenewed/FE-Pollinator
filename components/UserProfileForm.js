@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
-import useAuth from '../utils/context/authContext';
+import { useAuth } from '../utils/context/authContext';
 import { updateUser, createUser } from '../api/userProfileData';
 
 // clears out the form after the user submits the form
