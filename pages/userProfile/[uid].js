@@ -8,15 +8,14 @@ import { useAuth } from '../../utils/context/authContext';
 import { getSingleUser } from '../../api/userProfileData';
 import UserProfileCard from '../../components/UserProfileCard';
 
-export default function UserProfile({ params }) {
+export default function UserProfile() {
   // set state for user
   const [userProfile, setUserProfile] = useState([]);
-  const { uid } = params;
   const { user } = useAuth();
 
   // function to get user profile
   const getUserProfile = () => {
-    getSingleUser(uid).then(setUserProfile);
+    getSingleUser(user.uid).then(setUserProfile);
   };
 
   // make api call to get user profile
@@ -26,7 +25,7 @@ export default function UserProfile({ params }) {
 
   return (
     <div className="mt-5 d-flex flex-wrap">
-      <div className="text-white ms-5 details">{userProfile.uid === null ? (
+      <div className="text-white ms-5 details">{!userProfile || !userProfile.uid ? (
         <>
           <h2>You have not created your userProfile yet</h2>
           <Link href="/userProfile/new" passHref>
@@ -34,9 +33,9 @@ export default function UserProfile({ params }) {
           </Link>
         </>
       ) : (
-        <><h5>{userProfile.obj}</h5>
+        <><h5>{userProfile.name}</h5>
           <h6>
-            <UserProfileCard key={user.uid} userObj={user} onUpdate={getUserProfile} />
+            <UserProfileCard key={userProfile.uid} userObj={userProfile} onUpdate={getUserProfile} />
           </h6>
         </>
       )}
@@ -44,7 +43,3 @@ export default function UserProfile({ params }) {
     </div>
   );
 }
-
-UserProfile.propTypes = {
-  params: PropTypes.objectOf({}).isRequired,
-};
